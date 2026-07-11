@@ -119,7 +119,7 @@ export const newsData: NewsItem[] = [
     date: 'September 22, 2024',
     category: 'Achievement',
     description: 'Our athletic teams dominated the regional athletics tournament this weekend, bringing home trophies in soccer, ...',
-    image: 'https://images.unsplash.com/photo-1526676001074-6fe5a3a6b97a?q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1517649763962-0c623066013b?q=80&w=800',
     content: 'BrightPath Academy athletes made history this weekend at the Regional Athletics Finals. Through teamwork, resilience, and exceptional performance, our teams swept the championships in soccer, track and field events, and basketball. The school community gathered to welcome the champions back, celebrating their outstanding sportsmanship and dedication to athletic excellence. We are proud of our student-athletes and coaches for their hard work.'
   },
   {
@@ -164,7 +164,7 @@ export const newsData: NewsItem[] = [
     date: 'August 10, 2024',
     category: 'Event',
     description: 'During the summer break, our students completed over 1,200 hours of community service, supporting local food banks...',
-    image: 'https://images.unsplash.com/photo-1559027615-cd4487df1365?q=80&w=800',
+    image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?q=80&w=800',
     content: 'This summer, BrightPath students demonstrated their commitment to character and community by volunteering over 1,200 collective hours. Initiatives included organising food drives, cleaning local parks, and tutoring primary school students. The school administration commends all volunteers for exemplifying our core value of empathy and making a tangible positive difference in the community.'
   },
   {
