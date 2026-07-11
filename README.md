@@ -1,75 +1,149 @@
-# React + TypeScript + Vite
+# BrightPath Academy
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A fictional private school marketing website — built as a portfolio case study for **Creative Emman**, demonstrating full-stack frontend capability: multi-page architecture, a custom design system, and a fully responsive, production-quality build.
 
-Currently, two official plugins are available:
+**Live demo:** [add deployed URL here]
+**Case study:** [add link to Creative Emman portfolio page here]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+---
 
-## React Compiler
+## Overview
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+BrightPath Academy is a 12-page marketing and informational website for a private school — admissions, academics, faculty, facilities, news, gallery, and contact. There is no dashboard, authentication, or backend; the goal is a polished, content-rich static site suitable for client pitches and portfolio presentation.
 
-## Expanding the ESLint configuration
+## Tech Stack
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- **React** (Vite) — no Next.js; the site has no server-side data fetching or auth
+- **TypeScript**
+- **React Router** — client-side page navigation
+- **Tailwind CSS** — styling and design system
+- **Framer Motion** — scroll reveals, animated stat counters
+- **ESLint + Prettier** — linting and formatting
+- **Deployed on** Vercel / Netlify
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Design System
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Full brand guidelines — color palette, typography, component rules, and responsive behavior — are documented in [`DESIGN.md`](./DESIGN.md). Key highlights:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+| Token | Hex | Usage |
+|---|---|---|
+| Mustard | `#F4C452` | Bold section backgrounds |
+| Cream | `#FBF3E4` | Primary content surface |
+| Navy | `#1B2A4A` | Primary text, buttons, nav |
+| Teal | `#3B8C8C` | Secondary accent |
+| Burnt Orange | `#E4772C` | Secondary accent |
 
+- **Display font:** Fraunces (serif) — section headlines
+- **Body/UI font:** Inter (sans-serif) — nav, body copy, buttons
+
+## Getting Started
+
+### Prerequisites
+- Node.js 18+
+- npm
+
+### Installation
+
+```bash
+git clone <repo-url>
+cd BrightPath-Academy
+npm install
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Development
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```bash
+npm run dev
+```
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+The site runs locally at `http://localhost:5173`.
+
+### Build
+
+```bash
+npm run build
+```
+
+### Preview production build
+
+```bash
+npm run preview
+```
+
+## Project Structure
 
 ```
+src/
+  components/
+    layout/       # Navbar, Footer, PageHeader
+    ui/           # Button, Card, Badge, Accordion, etc.
+    sections/     # Hero, StatsStrip, TestimonialCarousel, etc.
+  pages/
+    Home.tsx
+    About.tsx
+    Admissions.tsx
+    Academics.tsx
+    Faculty.tsx
+    Facilities.tsx
+    News.tsx
+    NewsDetail.tsx
+    Gallery.tsx
+    Testimonials.tsx
+    Contact.tsx
+    NotFound.tsx
+  data/
+    faculty.ts
+    news.ts
+    testimonials.ts
+    programs.ts
+  App.tsx
+  main.tsx
+```
+
+Content lives in `src/data/` rather than being hardcoded into components — this keeps the site CMS-ready and mirrors how a real client project would be structured.
+
+## Pages
+
+| Page | Route | Description |
+|---|---|---|
+| Home | `/` | Hero, stats strip, value props, program previews, testimonials, news preview |
+| About | `/about` | Mission/vision, history timeline, values, principal's message |
+| Admissions | `/admissions` | Application process, requirements, tuition, FAQ |
+| Academics | `/academics` | Grade-level programs and extracurriculars |
+| Faculty | `/faculty` | Staff directory with bios |
+| Facilities | `/facilities` | Campus tour — labs, library, sports, cafeteria |
+| News & Events | `/news` | Event and announcement listing |
+| News Detail | `/news/:slug` | Single article/event view |
+| Gallery | `/gallery` | Filterable photo grid |
+| Testimonials | `/testimonials` | Parent/student/alumni quotes |
+| Contact | `/contact` | Map, contact form, FAQs |
+| 404 | `*` | Not-found page |
+
+## Scripts
+
+| Command | Description |
+|---|---|
+| `npm run dev` | Start local dev server |
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build locally |
+| `npm run lint` | Run ESLint |
+
+## Quality Checklist
+
+- [x] Fully responsive — mobile, tablet, desktop
+- [x] Realistic content — no placeholder/Lorem Ipsum text
+- [ ] Deployed live with a shareable URL
+- [ ] Lighthouse audit passed — performance, accessibility, SEO
+- [ ] Cross-browser tested
+
+## Contributing
+
+This is an internal Creative Emman portfolio project. For changes, create a feature branch and open a pull request:
+
+```bash
+git checkout -b feature/your-feature-name
+```
+
+## License
+
+Internal project — © Creative Emman. Not for external distribution without permission.
