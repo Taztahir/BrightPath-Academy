@@ -1,3 +1,8 @@
+import team1 from '../assets/team-1.png'
+import team2 from '../assets/team-2.png'
+import team3 from '../assets/team-3.png'
+import team4 from '../assets/team-4.png'
+
 export interface FacultyMember {
   id: string
   name: string
@@ -16,7 +21,7 @@ export const facultyMembers: FacultyMember[] = [
     category: 'Humanities',
     tag: 'HUMANITIES',
     bio: 'Over 20 years of experience in global educational leadership and curriculum design.',
-    image: 'https://images.unsplash.com/photo-1580894732444-8fecef2271ff?q=80&w=800&auto=format&fit=crop',
+    image: team1,
   },
   {
     id: 'marcus-thorne',
@@ -25,7 +30,7 @@ export const facultyMembers: FacultyMember[] = [
     category: 'STEM',
     tag: 'STEM',
     bio: 'A former NASA engineer dedicated to bringing hands-on experimental science to the classroom.',
-    image: 'https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?q=80&w=800&auto=format&fit=crop',
+    image: team2,
   },
   {
     id: 'sarah-jenkins',
@@ -34,7 +39,7 @@ export const facultyMembers: FacultyMember[] = [
     category: 'Arts & Music',
     tag: 'FINE ARTS',
     bio: 'Encouraging students to find their unique voice through diverse media and creative expression.',
-    image: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=800&auto=format&fit=crop',
+    image: team3,
   },
   {
     id: 'julian-vance',
@@ -43,7 +48,7 @@ export const facultyMembers: FacultyMember[] = [
     category: 'STEM',
     tag: 'MATH',
     bio: 'Specializes in making complex mathematical theories accessible and engaging for young minds.',
-    image: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=800&auto=format&fit=crop',
+    image: team4,
   },
   {
     id: 'clara-beaumont',
