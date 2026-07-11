@@ -1,0 +1,84 @@
+@import "tailwindcss";
+
+@theme {
+  --font-fraunces: "Fraunces", serif;
+  --font-inter: "Inter", sans-serif;
+  --font-jakarta: "Plus Jakarta Sans", sans-serif;
+  
+  --color-academy-cream: var(--academy-cream);
+  --color-academy-navy: var(--academy-navy);
+  --color-academy-burnt-orange: var(--academy-burnt-orange);
+  --color-academy-yellow: var(--academy-yellow);
+  --color-academy-teal: var(--academy-teal);
+
+  --animate-fade-in-down: fade-in-down 0.5s ease-out forwards;
+  --animate-fade-in-up: fade-in-up 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  --animate-fade-in: fade-in 0.6s ease-out forwards;
+  --animate-float: float 4s ease-in-out infinite;
+
+  @keyframes fade-in-down {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in-up {
+    from {
+      opacity: 0;
+      transform: translateY(24px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fade-in {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes float {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-6px);
+    }
+  }
+}
+
+:root {
+  --academy-cream: #FBF3E4;
+  --academy-navy: #1B2A4A;
+  --academy-burnt-orange: #E4772C;
+  --academy-yellow: #F4C44F;
+  --academy-teal: #3C8B88;
+}
+
+body {
+  font-family: var(--font-jakarta);
+  background-color: #FAF7F2;
+  color: var(--academy-navy);
+  margin: 0;
+  padding: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-delay: 0s !important;
+    animation-duration: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0s !important;
+    scroll-behavior: auto !important;
+  }
+}
