@@ -1,12 +1,17 @@
 import { motion } from 'framer-motion'
+import { FacultyMember } from '../../data/faculty'
+
+interface TeamMemberCardProps {
+  member: FacultyMember
+}
 
 /**
  * Reusable card component for displaying a faculty or staff member.
  * Features hover animations, responsive layouts, and smooth transition animations.
  */
-export default function TeamMemberCard({ member }) {
+export default function TeamMemberCard({ member }: TeamMemberCardProps) {
   // Helper to color-code tags based on department/tag name
-  const getTagColor = (tag) => {
+  const getTagColor = (tag: string) => {
     switch (tag) {
       case 'STEM':
         return 'bg-academy-burnt-orange/95 text-white'
