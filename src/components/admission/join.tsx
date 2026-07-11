@@ -2,6 +2,13 @@ import { motion } from 'framer-motion'
 import JoinImg from '../../assets/Join.png'
 
 export default function Join() {
+  const handleScrollToApplication = () => {
+    const target = document.getElementById('application-requirements')
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <section className="w-full bg-[#FAF7F2] py-16 lg:py-24 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
@@ -33,6 +40,7 @@ export default function Join() {
             <div className="flex flex-wrap gap-4 pt-2">
               <button
                 type="button"
+                onClick={handleScrollToApplication}
                 className="bg-academy-navy text-white hover:bg-academy-navy/90 font-jakarta font-bold text-xs tracking-wider uppercase py-3.5 px-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-[0.97] cursor-pointer"
               >
                 Start Application
