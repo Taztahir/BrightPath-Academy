@@ -1,4 +1,4 @@
-import FAQComponent, { FAQItem } from '../ui/FAQ'
+import FAQComponent, { type FAQItem } from '../ui/FAQ'
 
 const ADMISSIONS_FAQ_ITEMS: FAQItem[] = [
   {
