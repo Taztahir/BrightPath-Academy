@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion'
-import { FacultyMember } from '../../data/faculty'
+import type { FacultyMember } from '../../data/faculty'
 
 interface TeamMemberCardProps {
   member: FacultyMember
