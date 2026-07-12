@@ -40,48 +40,23 @@ const scaleIn: Variants = {
   },
 };
 
-/* ------------------------------------------------------------------ */
-/*  Small building blocks                                              */
-/* ------------------------------------------------------------------ */
+const slideInLeft: Variants = {
+  hidden: { opacity: 0, x: -60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  },
+};
 
-function Eyebrow({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center gap-2 mb-3 text-xs font-bold uppercase tracking-[0.14em] text-academy-burnt-orange font-jakarta">
-      <span className="h-px w-[18px] bg-academy-burnt-orange" />
-      {children}
-    </span>
-  );
-}
-
-function ArtPanel({
-  children,
-  tone = "navy",
-}: {
-  children: React.ReactNode;
-  tone?: "navy" | "teal" | "cream";
-}) {
-  const bg =
-    tone === "navy"
-      ? "bg-academy-navy/[0.08]"
-      : tone === "teal"
-        ? "bg-academy-teal/10"
-        : "bg-white/10";
-  return (
-    <div
-      className={`relative aspect-[4/3.3] rounded-3xl flex items-center justify-center overflow-hidden ${bg}`}
-    >
-      <div className="w-[58%] h-[58%]">{children}</div>
-    </div>
-  );
-}
-
-function Tag({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-flex items-center gap-2 rounded-full border border-academy-navy/15 bg-academy-navy/[0.06] px-4 py-2.5 text-[13.5px] font-semibold font-jakarta text-academy-navy">
-      {children}
-    </span>
-  );
-}
+const slideInRight: Variants = {
+  hidden: { opacity: 0, x: 60 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.8, ease: [0.16, 1, 0.3, 1] },
+  },
+};
 
 /* ------------------------------------------------------------------ */
 /*  Page                                                                */
@@ -91,7 +66,7 @@ export default function Facilities() {
   return (
     <main className="bg-[#FAF7F2] text-academy-navy font-jakarta">
       {/* ---------------- HERO ---------------- */}
-      <section className="bg-academy-cream  pt-25 md:pt-16 overflow-hidden">
+      <section className="bg-[#FAF7F2]  pt-25 md:pt-16 overflow-hidden">
         <div className=" max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-14 items-center pb-16">
           <motion.div
             className="flex flex-col space-y-6 sm:space-y-8"
@@ -125,18 +100,28 @@ export default function Facilities() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1], delay: 0.3 }}
             >
-              <Link
-                to="#"
-                className="bg-academy-navy text-white hover:bg-academy-navy/90 font-jakarta font-bold text-xs tracking-wider uppercase py-3.5 px-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Schedule a Tour
-              </Link>
-              <Link
-                to="#"
-                className="border border-academy-navy text-academy-navy hover:bg-academy-navy/5 font-jakarta font-bold text-xs tracking-wider uppercase py-3.5 px-8 rounded-lg transition-all duration-300 hover:scale-[1.03] active:scale-[0.97]"
+                <Link
+                  to="#"
+                  className="bg-academy-navy text-white hover:bg-academy-navy/90 font-jakarta font-bold text-xs tracking-wider uppercase py-3.5 px-8 rounded-lg shadow-md hover:shadow-xl transition-all duration-300 active:scale-[0.97]"
+                >
+                  Schedule a Tour
+                </Link>
+              </motion.div>
+              <motion.div
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
               >
-                Download Brochure
-              </Link>
+                <Link
+                  to="#"
+                  className="border border-academy-navy text-academy-navy hover:bg-academy-navy/5 font-jakarta font-bold text-xs tracking-wider uppercase py-3.5 px-8 rounded-lg transition-all duration-300 active:scale-[0.97]"
+                >
+                  Download Brochure
+                </Link>
+              </motion.div>
             </motion.div>
           </motion.div>
 
@@ -146,9 +131,9 @@ export default function Facilities() {
             variants={scaleIn}
             className="relative flex justify-center lg:justify-end"
           >
-            <div className="relative max-w-[480px] rounded-[26px] ">
+            <div className="relative max-w-120 rounded-[26px] ">
               <img
-                className="relative rounded-[22px] h-[400px] lg:h-[550px] overflow-hiddew-full object-cover  rounded-[2rem] object-top lg:h-[500px]"
+                className="relative rounded-[22px] h-100 lg:h-[550px] overflow-hiddew-full object-cover  rounded-[2rem] object-top lg:h-[500px]"
                 src={facility}
                 alt="BrightPath Academy Student"
               />
@@ -188,15 +173,17 @@ export default function Facilities() {
           variants={stagger}
           className="mx-auto px-8 grid md:grid-cols-2 gap-16 items-center"
         >
-          <motion.div variants={fadeUp} className="">
-            <img
+          <motion.div variants={slideInLeft} className="">
+            <motion.img
+              whileHover={{ scale: 1.02 }}
+              transition={{ duration: 0.4 }}
               className="relative border-10 border-white w-full object-cover rounded-[2rem] object-top h-[400px] lg:h-[500px]"
               src={facility}
               alt="BrightPath Academy Student"
             />
           </motion.div>
 
-          <motion.div variants={fadeUp} className="">
+          <motion.div variants={slideInRight} className="">
             <h2 className="font-fraunces text-academy-burnt-orange text-[40px] mb-4">
               The Knowledge Hub
             </h2>
@@ -214,11 +201,15 @@ export default function Facilities() {
                 <motion.li
                   key={index}
                   variants={fadeUp}
-                  className="flex items-center gap-3 text-[15px] font-medium text-academy-burnt-orange font-jakarta"
+                  whileHover={{ x: 8 }}
+                  className="flex items-center gap-3 text-[15px] font-medium text-academy-burnt-orange font-jakarta cursor-pointer"
                 >
-                  <span>
+                  <motion.span
+                    whileHover={{ rotate: 12, scale: 1.2 }}
+                    transition={{ duration: 0.3 }}
+                  >
                     <Icon className="h-4 w-4 text-black" />
-                  </span>
+                  </motion.span>
                   {label}
                 </motion.li>
               ))}
@@ -248,19 +239,41 @@ export default function Facilities() {
               professional-grade environment.
             </p>
             <div className="grid grid-cols-2 w-full flex-wrap gap-3">
-              <motion.div variants={scaleIn} className='bg-academy-yellow items-center p-5 rounded-lg text-sm font-semibold'>
-                <Microscope className='w-5' />
+              <motion.div
+                variants={scaleIn}
+                whileHover={{ scale: 1.05, y: -4 }}
+                transition={{ duration: 0.3 }}
+                className='bg-academy-yellow items-center p-5 rounded-lg text-sm font-semibold cursor-pointer'
+              >
+                <motion.div
+                  whileHover={{ rotate: 360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <Microscope className='w-5' />
+                </motion.div>
                 Robotics Bay
               </motion.div>
-              <motion.div variants={scaleIn} className='bg-academy-teal items-center p-5 rounded-lg text-sm text-white font-semibold' >
-                <FlaskConical className='w-5' />
+              <motion.div
+                variants={scaleIn}
+                whileHover={{ scale: 1.05, y: -4 }}
+                transition={{ duration: 0.3 }}
+                className='bg-academy-teal items-center p-5 rounded-lg text-sm text-white font-semibold cursor-pointer'
+              >
+                <motion.div
+                  whileHover={{ rotate: -360 }}
+                  transition={{ duration: 0.6 }}
+                >
+                  <FlaskConical className='w-5' />
+                </motion.div>
                 Chemical Safety
               </motion.div>
             </div>
           </motion.div>
 
-          <motion.div variants={fadeUp} className="order-1 md:order-2">
-            <img
+          <motion.div variants={slideInRight} className="order-1 md:order-2">
+            <motion.img
+              whileHover={{ scale: 1.03 }}
+              transition={{ duration: 0.4 }}
               className="relative rounded-[22px] overflow-hidden w-full object-cover rounded-[2rem] object-top h-[300px] lg:h-[500px]"
               src={lab}
               alt="BrightPath Academy Student"
@@ -279,20 +292,23 @@ export default function Facilities() {
           className=" mx-auto px-8 grid md:grid-cols-2 gap-16 items-center"
         >
           <motion.div variants={fadeUp} className="grid py-20 grid-cols-2 gap-4">
-            <img
-              className="relative rounded-[22px] h-[250px] -mt-10 overflow-hiddew-full object-cover  rounded-[2rem] object-top w-full"
+            <motion.img
+              whileHover={{ scale: 1.05, y: -8 }}
+              transition={{ duration: 0.4 }}
+              className="relative rounded-[22px] h-[250px] -mt-10 overflow-hidden w-full object-cover  rounded-[2rem] object-top"
               src={pool}
               alt="BrightPath Academy Student"
             />
-            <img
-              className="relative rounded-[22px] h-[250px] -mb-10 overflow-hiddew-full object-cover  rounded-[2rem] object-top "
+            <motion.img
+              whileHover={{ scale: 1.05, y: 8 }}
+              transition={{ duration: 0.4 }}
+              className="relative rounded-[22px] h-[250px] -mb-10 overflow-hidden w-full object-cover  rounded-[2rem] object-top "
               src={court}
               alt="BrightPath Academy Student"
             />
           </motion.div>
 
           <motion.div variants={fadeUp} className="md:order-1">
-            <Eyebrow>Wing Three</Eyebrow>
             <h2 className="font-fraunces text-[clamp(28px,3.2vw,38px)] mb-4">
               The Athletic Wing
             </h2>
@@ -304,11 +320,18 @@ export default function Facilities() {
             </p>
             <motion.a
               href="#"
-              whileHover={{ y: -2 }}
-              whileTap={{ scale: 0.97 }}
-              className="inline-flex items-center rounded-full bg-academy-navy px-6 py-3.5 text-[14.5px] font-semibold font-jakarta text-academy-cream shadow-lg shadow-academy-navy/20"
+              whileHover={{ scale: 1.08, y: -4 }}
+              whileTap={{ scale: 0.92 }}
+              transition={{ duration: 0.3 }}
+              className="inline-flex items-center gap-2 rounded-full bg-academy-navy px-6 py-3.5 text-[14.5px] font-semibold font-jakarta text-academy-cream shadow-lg shadow-academy-navy/20"
             >
-              View Team Schedules
+              <span>View Team Schedules</span>
+              <motion.span
+                animate={{ x: [0, 4, 0] }}
+                transition={{ duration: 2, repeat: Infinity }}
+              >
+                →
+              </motion.span>
             </motion.a>
           </motion.div>
         </motion.div>
@@ -342,12 +365,15 @@ export default function Facilities() {
             <motion.div
               key={card.title}
               variants={fadeUp}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -8 }}
+              transition={{ duration: 0.4 }}
               className={`flex flex-col relative overflow-hidden text-black font-jakarta `}
             >
               {/* Image Container: Full width, set height, cropped perfectly */}
               <div className="w-full h-80 overflow-hidden">
-                <img
+                <motion.img
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.5 }}
                   src={card.image}
                   alt={card.title}
                   className="w-full h-full rounded-2xl object-cover"
@@ -385,17 +411,34 @@ export default function Facilities() {
               the sensory play modules, we ensure that breaks are as
               enriching as lessons.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <div className='flex text-sm font-semibold items-center gap-1'> <TreeDeciduous className='w-5' /> Nature Trails</div>
-              <div className='flex text-sm font-semibold items-center gap-1'> <Rocket className='w-5' /> Modern Play</div>
-              <div className='flex text-sm font-semibold items-center gap-1'> <ShieldCheck className='w-5' /> Safety First</div>
+            <motion.div initial="hidden" whileInView="visible" variants={stagger} className="flex flex-wrap gap-3">
+              <motion.div variants={fadeUp} whileHover={{ scale: 1.08, x: 4 }} className='flex text-sm font-semibold items-center gap-1 cursor-pointer'>
+                <motion.span whileHover={{ rotate: 20 }} transition={{ duration: 0.3 }}>
+                  <TreeDeciduous className='w-5' />
+                </motion.span>
+                Nature Trails
+              </motion.div>
+              <motion.div variants={fadeUp} whileHover={{ scale: 1.08, x: 4 }} className='flex text-sm font-semibold items-center gap-1 cursor-pointer'>
+                <motion.span whileHover={{ y: -4 }} transition={{ duration: 0.3 }}>
+                  <Rocket className='w-5' />
+                </motion.span>
+                Modern Play
+              </motion.div>
+              <motion.div variants={fadeUp} whileHover={{ scale: 1.08, x: 4 }} className='flex text-sm font-semibold items-center gap-1 cursor-pointer'>
+                <motion.span whileHover={{ scale: 1.3 }} transition={{ duration: 0.3 }}>
+                  <ShieldCheck className='w-5' />
+                </motion.span>
+                Safety First
+              </motion.div>
 
-            </div>
+            </motion.div>
           </motion.div>
-          <motion.div variants={fadeUp} className="w-full h-100 overflow-hidden order-1 md:order-2">
-            <img
+          <motion.div variants={slideInRight} className="w-full h-100 overflow-hidden order-1 md:order-2">
+            <motion.img
+              whileHover={{ scale: 1.05 }}
+              transition={{ duration: 0.4 }}
               src={play}
-              className="w-full h-full rounded-2xl object-cover"
+              className="w-full h-full rounded-2xl object-cover cursor-pointer"
             />
           </motion.div>
         </motion.div>
