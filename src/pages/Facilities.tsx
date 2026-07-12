@@ -189,6 +189,14 @@ export default function Facilities() {
           className="mx-auto px-8 grid md:grid-cols-2 gap-16 items-center"
         >
           <motion.div variants={fadeUp} className="">
+            <img
+              className="relative border-10 border-white w-full object-cover rounded-[2rem] object-top h-[400px] lg:h-[500px]"
+              src={facility}
+              alt="BrightPath Academy Student"
+            />
+          </motion.div>
+
+          <motion.div variants={fadeUp} className="">
             <h2 className="font-fraunces text-academy-burnt-orange text-[40px] mb-4">
               The Knowledge Hub
             </h2>
@@ -216,13 +224,6 @@ export default function Facilities() {
               ))}
             </motion.ul>
           </motion.div>
-          <motion.div variants={fadeUp} className="">
-            <img
-              className="relative border-10 border-white w-full object-cover rounded-[2rem] object-top h-[400px] lg:h-[500px]"
-              src={facility}
-              alt="BrightPath Academy Student"
-            />
-          </motion.div>
         </motion.div>
       </section>
 
@@ -247,20 +248,20 @@ export default function Facilities() {
               professional-grade environment.
             </p>
             <div className="grid grid-cols-2 w-full flex-wrap gap-3">
-              < motion.div variants={scaleIn} className='bg-academy-yellow items-center p-5 rounded-lg text-sm font-semibold' >
+              <motion.div variants={scaleIn} className='bg-academy-yellow items-center p-5 rounded-lg text-sm font-semibold'>
                 <Microscope className='w-5' />
                 Robotics Bay
               </motion.div>
-              <motion.div variants={scaleIn} className='bg-academy-teal items-center p-5 rounded-lg text-sm font-semibold' >
+              <motion.div variants={scaleIn} className='bg-academy-teal items-center p-5 rounded-lg text-sm text-white font-semibold' >
                 <FlaskConical className='w-5' />
                 Chemical Safety
               </motion.div>
             </div>
           </motion.div>
 
-          <motion.div variants={fadeUp} className="">
+          <motion.div variants={fadeUp} className="order-1 md:order-2">
             <img
-              className="relative rounded-[22px] overflow-hiddew-full object-cover  rounded-[2rem] object-top h-[300px] lg:h-[500px]"
+              className="relative rounded-[22px] overflow-hidden w-full object-cover rounded-[2rem] object-top h-[300px] lg:h-[500px]"
               src={lab}
               alt="BrightPath Academy Student"
             />
@@ -373,14 +374,8 @@ export default function Facilities() {
           variants={stagger}
           className=" mx-auto px-8 grid md:grid-cols-2 gap-16 items-center"
         >
-          <div className="w-full h-100 overflow-hidden order-2">
-            <img
-              src={play}
-              className="w-full h-full rounded-2xl object-cover"
-            />
-          </div>
 
-          <motion.div variants={fadeUp} className="md:order-1">
+          <motion.div variants={fadeUp} className="order-2 md:order-1">
             <h2 className="font-fraunces text-[40px] mb-4">
               Creative Play Zones
             </h2>
@@ -396,6 +391,12 @@ export default function Facilities() {
               <div className='flex text-sm font-semibold items-center gap-1'> <ShieldCheck className='w-5' /> Safety First</div>
 
             </div>
+          </motion.div>
+          <motion.div variants={fadeUp} className="w-full h-100 overflow-hidden order-1 md:order-2">
+            <img
+              src={play}
+              className="w-full h-full rounded-2xl object-cover"
+            />
           </motion.div>
         </motion.div>
       </section>
