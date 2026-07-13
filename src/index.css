@@ -73,6 +73,22 @@ body {
   padding: 0;
 }
 
+.container{
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 4rem;
+    box-sizing: border-box;
+}
+
+@media (max-width:768px){
+
+.container{
+    padding: 0 1.5rem;
+}
+
+}
+
 @media (prefers-reduced-motion: reduce) {
   * {
     animation-delay: 0s !important;
