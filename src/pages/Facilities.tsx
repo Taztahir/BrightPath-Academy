@@ -193,11 +193,13 @@ export default function Facilities() {
             </p>
 
             <motion.ul variants={stagger} className="grid gap-3.5">
-              {[
-                [LucideBookOpenCheck, "20,000+ curated titles and journals"],
-                [Laptop, "High-speed digital research terminals"],
-                [Users, "Private discussion pods"],
-              ].map(([Icon, label], index) => (
+              {(
+                [
+                  [LucideBookOpenCheck, "20,000+ curated titles and journals"],
+                  [Laptop, "High-speed digital research terminals"],
+                  [Users, "Private discussion pods"],
+                ] as [React.ElementType, string][]
+              ).map(([Icon, label], index) => (
                 <motion.li
                   key={index}
                   variants={fadeUp}
